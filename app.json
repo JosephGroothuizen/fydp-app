@@ -1,12 +1,4 @@
 {
-  "name": "fydp-app",
-  "displayName": "fydp-app",
-  "expo": {
-    "name": "fydp-app",
-    "slug": "fydp-app",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+  "name": "FYDPApp",
+  "displayName": "FYDPApp"
 }
