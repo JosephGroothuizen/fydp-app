@@ -17,18 +17,23 @@ const Determining: React.FC = ({}) => {
     requestPermissionsAsync();
   }, []);
 
-  if (hasPermission === false) {
-    return (
-      <React.Fragment>
-        <Text>No access to camera</Text>
-        <Button onPress={requestPermissionsAsync}>Request Access</Button>
-      </React.Fragment>
-    );
-  }
-
   return (
     <Container>
-      <Camera style={CameraStyles.preview} type={Camera.Constants.Type.back} />
+      {hasPermission === false ? (
+        <React.Fragment>
+          <Text>No access to camera</Text>
+          <Button
+            type="solid"
+            title="Request Access"
+            onPress={requestPermissionsAsync}
+          />
+        </React.Fragment>
+      ) : (
+        <Camera
+          style={CameraStyles.preview}
+          type={Camera.Constants.Type.back}
+        />
+      )}
     </Container>
   );
 };
