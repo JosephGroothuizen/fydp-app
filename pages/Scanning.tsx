@@ -1,8 +1,14 @@
-import * as React from "react";
-import {Text} from "react-native";
+import * as React from 'react';
+import {Text} from 'react-native-elements';
 
-const Scanning: React.FC = ({})=> {
-    return (<Text>Scanning Component</Text>);
+import Container from '../components/Container';
+
+const Scanning: React.FC = ({}) => {
+  return (
+    <Container>
+      <Text h1>Scanning Component</Text>
+    </Container>
+  );
 };
 
 export default Scanning;

@@ -1,8 +1,14 @@
-import * as React from "react";
-import {Text} from "react-native";
+import * as React from 'react';
+import {Text} from 'react-native-elements';
 
-const Location: React.FC = ({})=> {
-    return (<Text>Location Component</Text>);
+import Container from '../components/Container';
+
+const Location: React.FC = ({}) => {
+  return (
+    <Container>
+      <Text h1>Location Component</Text>
+    </Container>
+  );
 };
 
 export default Location;
