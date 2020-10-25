@@ -13,10 +13,10 @@ const linking = {
   prefixes: [],
   config: {
     screens: {
-      determining: '',
-      location: '/location',
-      scanning: '/scanning',
-      sorting: '/sorting',
+      Scanning: '/Scanning',
+      Location: '/Location',
+      Determining: '/Determining',
+      Sorting: '/Sorting',
     },
   },
 };
@@ -25,14 +25,14 @@ export default function App() {
   return (
     <NavigationContainer linking={linking}>
       <Stack.Navigator
-        initialRouteName="determining"
+        initialRouteName="Scanning"
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="determining" component={Determining} />
-        <Stack.Screen name="location" component={Location} />
-        <Stack.Screen name="scanning" component={Scanning} />
-        <Stack.Screen name="sorting" component={Sorting} />
+        <Stack.Screen name="Determining" component={Determining} />
+        <Stack.Screen name="Location" component={Location} />
+        <Stack.Screen name="Scanning" component={Scanning} />
+        <Stack.Screen name="Sorting" component={Sorting} />
       </Stack.Navigator>
     </NavigationContainer>
   );
