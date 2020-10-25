@@ -9,7 +9,10 @@ import Sorting from './pages/Sorting';
 
 const Stack = createStackNavigator();
 
-export const AppContext = React.createContext({});
+export const AppContext = React.createContext<{
+  image: string;
+  setImage: (image: string) => void;
+}>({image: '', setImage: () => {}});
 
 const linking = {
   prefixes: [],
