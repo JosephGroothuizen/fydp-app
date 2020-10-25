@@ -9,6 +9,8 @@ import Sorting from './pages/Sorting';
 
 const Stack = createStackNavigator();
 
+export const AppContext = React.createContext({});
+
 const linking = {
   prefixes: [],
   config: {
@@ -21,19 +23,25 @@ const linking = {
   },
 };
 
-export default function App() {
+const App: React.FC = () => {
+  const [image, setImage] = React.useState('');
+
   return (
-    <NavigationContainer linking={linking}>
-      <Stack.Navigator
-        initialRouteName="Scanning"
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="Determining" component={Determining} />
-        <Stack.Screen name="Location" component={Location} />
-        <Stack.Screen name="Scanning" component={Scanning} />
-        <Stack.Screen name="Sorting" component={Sorting} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AppContext.Provider value={{image, setImage}}>
+      <NavigationContainer linking={linking}>
+        <Stack.Navigator
+          initialRouteName="Scanning"
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name="Determining" component={Determining} />
+          <Stack.Screen name="Location" component={Location} />
+          <Stack.Screen name="Scanning" component={Scanning} />
+          <Stack.Screen name="Sorting" component={Sorting} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AppContext.Provider>
   );
-}
+};
+
+export default App;

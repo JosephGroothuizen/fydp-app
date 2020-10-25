@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text, Button, Image} from 'react-native-elements';
 import {Camera} from 'expo-camera';
+import {AppContext} from '../App';
 
 import Container from '../components/Container';
 
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const Scanning: React.FC<Props> = ({navigation}) => {
+  const {setImage} = React.useContext(AppContext);
   const [hasPermission, setHasPermission] = React.useState(false);
   const [isCameraReady, setIsCameraReady] = React.useState(false);
   const [isPreview, setIsPreview] = React.useState(false);
@@ -38,6 +40,7 @@ const Scanning: React.FC<Props> = ({navigation}) => {
       if (source) {
         setIsPreview(true);
         setSource(source);
+        setImage(source);
       }
     }
   };
