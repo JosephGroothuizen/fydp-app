@@ -33,7 +33,12 @@ const Scanning: React.FC<Props> = ({navigation}) => {
 
   const takePicture = async () => {
     if (cameraRef.current) {
-      const options = {quality: 0.5, base64: true, skipProcessing: true};
+      const options = {
+        quality: 0,
+        base64: true,
+        skipProcessing: true,
+        exif: false,
+      };
       setIsCameraReady(false);
       const data = await cameraRef.current.takePictureAsync(options);
       const source = data.base64;
