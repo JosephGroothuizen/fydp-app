@@ -14,3 +14,4 @@ pressing `a` on commandline (which should launch it on Android)
 ---
 
 If debugging, consider using: https://docs.expo.io/workflow/debugging/#react-native-debugger
+on port 19001 and `Enable Network Inspect`
