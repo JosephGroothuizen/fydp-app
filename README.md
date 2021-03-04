@@ -8,6 +8,9 @@ Utilizing library Expo
 
 Startup instructions here: https://www.npmjs.com/package/expo-cli
 
-Using the qr code through the phone camera may be easiest
+Using the qr code through the phone camera may be easiest or
+pressing `a` on commandline (which should launch it on Android)
 
 ---
+
+If debugging, consider using: https://docs.expo.io/workflow/debugging/#react-native-debugger

@@ -10,6 +10,17 @@ interface Props {
   navigation: any;
 }
 
+export const iconStyles = {
+  size: 15,
+  color: 'white',
+};
+
+export const buttonStyles = {
+  height: 50,
+  width: 150,
+  marginVertical: 25,
+};
+
 const Scanning: React.FC<Props> = ({navigation}) => {
   const {setImage} = React.useContext(AppContext);
   const [hasPermission, setHasPermission] = React.useState(false);
@@ -56,11 +67,6 @@ const Scanning: React.FC<Props> = ({navigation}) => {
 
   const advancePage = () => {
     navigation.navigate('Determining');
-  };
-
-  const iconStyles = {
-    size: 15,
-    color: 'white',
   };
 
   const renderPreview = () => (
@@ -127,7 +133,7 @@ const Scanning: React.FC<Props> = ({navigation}) => {
   );
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -142,11 +148,7 @@ const styles = StyleSheet.create({
     width: 350,
     height: 500,
   },
-  buttonStyles: {
-    height: 50,
-    width: 150,
-    marginVertical: 25,
-  },
+  buttonStyles: buttonStyles,
   closeCross: {
     width: '68%',
     height: 1,

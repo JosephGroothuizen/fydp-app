@@ -1,11 +1,16 @@
 import * as React from 'react';
 import {StyleSheet} from 'react-native';
-import {Text, Image} from 'react-native-elements';
+import {Button, Text, Image} from 'react-native-elements';
 import {AppContext} from '../App';
 
 import Container from '../components/Container';
+import {buttonStyles, iconStyles} from './Scanning';
 
-const Determining: React.FC = ({}) => {
+interface Props {
+  navigation: any;
+}
+
+const Determining: React.FC<Props> = ({navigation}) => {
   const {image} = React.useContext(AppContext);
 
   React.useEffect(() => {
@@ -26,9 +31,19 @@ const Determining: React.FC = ({}) => {
     postImage();
   }, [image]);
 
+  const priorPage = () => {
+    navigation.navigate('Scanning');
+  };
+
   return (
     <Container>
       <>
+        <Button
+          onPress={priorPage}
+          icon={{...iconStyles, name: 'backspace'}}
+          title="Back"
+          buttonStyle={styles.buttonStyles}
+        />
         <Text h1>Determining Component</Text>
         <Image
           source={{uri: `data:image/png;base64,${image}`}}
@@ -44,6 +59,7 @@ const styles = StyleSheet.create({
     width: 350,
     height: 500,
   },
+  buttonStyles: buttonStyles,
 });
 
 export default Determining;
