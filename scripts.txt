@@ -1,0 +1,3 @@
+adb shell screenrecord /sdcard/example.mp4
+
+Ctrl + T (debugger)

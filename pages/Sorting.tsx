@@ -18,9 +18,19 @@ const Sorting: React.FC<Props> = ({navigation}) => {
     navigation.navigate('Determining');
   };
 
+  const homePage = () => {
+    navigation.navigate('Scanning');
+  };
+
   return (
     <Container>
       <>
+        <Button
+          onPress={homePage}
+          icon={{...iconStyles, name: 'home'}}
+          title="Home"
+          buttonStyle={styles.buttonStyles}
+        />
         <Button
           onPress={priorPage}
           icon={{...iconStyles, name: 'backspace'}}

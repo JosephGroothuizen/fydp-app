@@ -4,7 +4,7 @@ import {Button, Text, Image} from 'react-native-elements';
 import {AppContext} from '../AppContext';
 
 import Container from '../components/Container';
-import {buttonStyles, iconStyles} from './Scanning';
+import {buttonStyles, iconStyles, imageStyles} from './Scanning';
 
 interface Props {
   navigation: any;
@@ -64,10 +64,7 @@ const Determining: React.FC<Props> = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  imageStyle: {
-    width: 350,
-    height: 500,
-  },
+  imageStyle: imageStyles,
   buttonStyles: buttonStyles,
 });
 

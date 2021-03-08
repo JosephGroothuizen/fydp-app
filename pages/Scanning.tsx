@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ImageManipulator from 'expo-image-manipulator';
 import {View, StyleSheet} from 'react-native';
 import {Text, Button, Image} from 'react-native-elements';
 import {Camera} from 'expo-camera';
@@ -19,6 +20,11 @@ export const buttonStyles = {
   height: 50,
   width: 150,
   marginVertical: 25,
+};
+
+export const imageStyles = {
+  width: 350,
+  height: 350,
 };
 
 const Scanning: React.FC<Props> = ({navigation}) => {
@@ -47,16 +53,24 @@ const Scanning: React.FC<Props> = ({navigation}) => {
       const options = {
         quality: 0,
         base64: true,
-        skipProcessing: true,
-        exif: false,
+        skipProcessing: false,
       };
       setIsCameraReady(false);
       const data = await cameraRef.current.takePictureAsync(options);
-      const source = data.base64;
-      if (source) {
-        setIsPreview(true);
-        setSource(source);
-        setImage(source);
+      const uri = data.uri;
+
+      if (uri) {
+        const manipResult = await ImageManipulator.manipulateAsync(uri, [], {
+          compress: 0.35,
+          format: ImageManipulator.SaveFormat.JPEG,
+          base64: true,
+        });
+        const source = manipResult.base64;
+        if (source) {
+          setIsPreview(true);
+          setSource(source);
+          setImage(source);
+        }
       }
     }
   };
@@ -144,10 +158,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
   },
-  cameraStyle: {
-    width: 350,
-    height: 500,
-  },
+  cameraStyle: imageStyles,
   buttonStyles: buttonStyles,
   closeCross: {
     width: '68%',
