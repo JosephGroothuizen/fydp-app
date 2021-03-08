@@ -6,13 +6,9 @@ import Determining from './pages/Determining';
 import Location from './pages/Location';
 import Scanning from './pages/Scanning';
 import Sorting from './pages/Sorting';
+import {AppContext} from './AppContext';
 
 const Stack = createStackNavigator();
-
-export const AppContext = React.createContext<{
-  image: string;
-  setImage: (image: string) => void;
-}>({image: '', setImage: () => {}});
 
 const linking = {
   prefixes: [],
@@ -28,9 +24,11 @@ const linking = {
 
 const App: React.FC = () => {
   const [image, setImage] = React.useState('');
+  const [classification, setClassification] = React.useState('');
 
   return (
-    <AppContext.Provider value={{image, setImage}}>
+    <AppContext.Provider
+      value={{image, setImage, classification, setClassification}}>
       <NavigationContainer linking={linking}>
         <Stack.Navigator
           initialRouteName="Scanning"

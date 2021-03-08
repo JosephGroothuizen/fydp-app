@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import {Button, Text, Image} from 'react-native-elements';
-import {AppContext} from '../App';
+import {AppContext} from '../AppContext';
 
 import Container from '../components/Container';
 import {buttonStyles, iconStyles} from './Scanning';
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Determining: React.FC<Props> = ({navigation}) => {
-  const {image} = React.useContext(AppContext);
+  const {image, setClassification} = React.useContext(AppContext);
 
   React.useEffect(() => {
     const postImage = async () => {
@@ -23,9 +23,13 @@ const Determining: React.FC<Props> = ({navigation}) => {
           body: JSON.stringify({image}),
         },
       );
-      const imageResp = await postReq.json();
-      console.log(imageResp);
+      let imageResp = await postReq.json();
+      imageResp = JSON.parse(imageResp);
       // example resp: {"classification":"compost"}
+      if (imageResp.classification) {
+        setClassification(imageResp.classification);
+        advancePage();
+      }
     };
 
     postImage();
@@ -33,6 +37,10 @@ const Determining: React.FC<Props> = ({navigation}) => {
 
   const priorPage = () => {
     navigation.navigate('Scanning');
+  };
+
+  const advancePage = () => {
+    navigation.navigate('Sorting');
   };
 
   return (
@@ -44,9 +52,10 @@ const Determining: React.FC<Props> = ({navigation}) => {
           title="Back"
           buttonStyle={styles.buttonStyles}
         />
-        <Text h1>Determining Component</Text>
+        <Text>Determining the Correct Placement</Text>
+        <Button loading type="clear" />
         <Image
-          source={{uri: `data:image/png;base64,${image}`}}
+          source={{uri: `data:image/jpg;base64,${image}`}}
           style={styles.imageStyle}
         />
       </>

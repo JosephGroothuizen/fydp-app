@@ -6,7 +6,7 @@ import Container from '../components/Container';
 const Location: React.FC = ({}) => {
   return (
     <Container>
-      <Text h1>Location Component</Text>
+      <Text>Location</Text>
     </Container>
   );
 };

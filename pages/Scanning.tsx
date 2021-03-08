@@ -2,7 +2,7 @@ import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Text, Button, Image} from 'react-native-elements';
 import {Camera} from 'expo-camera';
-import {AppContext} from '../App';
+import {AppContext} from '../AppContext';
 
 import Container from '../components/Container';
 
@@ -86,7 +86,7 @@ const Scanning: React.FC<Props> = ({navigation}) => {
         />
       </View>
       <Image
-        source={{uri: `data:image/png;base64,${source}`}}
+        source={{uri: `data:image/jpg;base64,${source}`}}
         style={styles.cameraStyle}
       />
     </React.Fragment>
